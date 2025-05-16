@@ -162,8 +162,9 @@ class App(ctk.CTk):
         self.info_frame = ctk.CTkFrame(self.main_app_frame)
         self.info_frame.grid(row=2, column=0, sticky="ew", pady=(0, 10))
         self.info_frame.grid_columnconfigure(1, weight=1)
-        ctk.CTkLabel(self.info_frame, text="Your Name:", font=ctk.CTkFont(size=12)).grid(row=0, column=0, padx=(10, 5),
-                                                                                         pady=10, sticky="w")
+        ctk.CTkLabel(self.info_frame, text="Your Full Name:", font=ctk.CTkFont(size=12)).grid(row=0, column=0,
+                                                                                              padx=(10, 5),
+                                                                                              pady=10, sticky="w")
         self.name_entry = ctk.CTkEntry(self.info_frame, placeholder_text="e.g., Jane Doe (Required to open forms)")
         self.name_entry.grid(row=0, column=1, padx=(0, 10), pady=10, sticky="ew")
 
@@ -268,11 +269,11 @@ class App(ctk.CTk):
     def open_form_for_filling(self, original_form_path_str, form_name):
         user_name = self.name_entry.get().strip()
         if not user_name:
-            messagebox.showerror("Name Required", "Please enter Your Name before opening a form.")
-            self.name_entry.focus();
+            messagebox.showerror("Name Required", "Please enter your full name before opening a form.")
+            self.name_entry.focus()
             return
         if not self.active_forms_directory or not self.active_forms_directory.is_dir():
-            messagebox.showerror("Error", f"Active forms directory for {self.user_type} is not valid.");
+            messagebox.showerror("Error", f"Active forms directory for {self.user_type} is not valid.")
             return
 
         filled_forms_path_dir = self.active_forms_directory / FILLED_FORMS_SUBDIR
